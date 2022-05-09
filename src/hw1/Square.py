@@ -2,7 +2,7 @@ from hw1.Rectangle import Rectangle
 
 class Square(Rectangle):
     """Square figure class"""
-    name = 'Square'
+    _name = 'Square'
 
     def __init__(self, *sides):
         if len(sides) == 1:
