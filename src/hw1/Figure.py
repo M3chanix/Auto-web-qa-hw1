@@ -4,12 +4,21 @@ class Figure():
     """ A base geometric figure class"""
     _name = 'Figure'
 
+    def __new__(cls, *args, **kwargs):
+        if cls is Figure:
+            raise TypeError('Instance of Figure class cannot be created')
+        else:
+            return super().__new__(cls)
+
     def __init__(self, *sides):
         try:
             for value in sides:
                 float(value)
         except ValueError:
             raise ValueError('Sides must be numbers')
+        for value in sides:
+            if value <= 0:
+                raise ValueError('Sides must be positive')
         self._sides = sides
 
     @property
